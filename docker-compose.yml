@@ -1,0 +1,14 @@
+version: "2.33.0"
+
+
+services:
+  django_p28:
+    build: .
+    container_name: Exam
+    restart: always
+    command: sh -c  "python3 manage.py makemigrations && python3 manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - 8000:8000
+
+volumes:
+  pgdata:

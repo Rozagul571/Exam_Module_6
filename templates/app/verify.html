@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify It’s You</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .verify-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+
+        .verify-icon {
+            font-size: 30px;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+
+        .verify-message {
+            color: #333;
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .code-input {
+            width: 80%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .verify-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .verify-button:hover {
+            background-color: #0056b3;
+        }
+
+        .try-again {
+            color: #007bff;
+            font-size: 12px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .try-again:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<form action="{% url 'verify_gmail' %}" method="post">
+    {% csrf_token %}
+    <div class="verify-container">
+        <div class="verify-icon">📧</div>
+        <h2>Verify It’s You</h2>
+        <p class="verify-message">
+            We sent a verification code to {{ request.session.email }}.<br>
+            Please check your inbox and enter the code below.
+        </p>
+        <input type="text" class="code-input" name="code" placeholder="Codni Tasdiqlang" maxlength="6">
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <button class="verify-button">Verify Code</button>
+        <a class="try-again">Didn’t receive an email? Try again</a>
+    </div>
+</form>
+</body>
+</html>
+
+{#<!DOCTYPE html>#}
+{#<html lang="uz">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <meta name="viewport" content="width=device-width, initial-scale=1.0">#}
+{#    <title>Verify It’s You</title>#}
+{#    <style>#}
+{#        body {#}
+{#            margin: 0;#}
+{#            padding: 0;#}
+{#            background-color: #1a1a1a; /* Dark background for contrast */#}
+{#            display: flex;#}
+{#            justify-content: center;#}
+{#            align-items: center;#}
+{#            height: 100vh;#}
+{#            font-family: Arial, sans-serif;#}
+{#        }#}
+{##}
+{#        .verify-container {#}
+{#            background-color: white;#}
+{#            padding: 20px;#}
+{#            border-radius: 10px;#}
+{#            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);#}
+{#            width: 300px;#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .verify-icon {#}
+{#            font-size: 30px;#}
+{#            color: #007bff; /* Blue color for the envelope icon */#}
+{#            margin-bottom: 15px;#}
+{#        }#}
+{##}
+{#        .verify-message {#}
+{#            color: #333;#}
+{#            font-size: 14px;#}
+{#            margin-bottom: 20px;#}
+{#            line-height: 1.5;#}
+{#        }#}
+{##}
+{#        .code-input {#}
+{#            width: 80%;#}
+{#            padding: 10px;#}
+{#            margin-bottom: 20px;#}
+{#            border: 1px solid #ccc;#}
+{#            border-radius: 5px;#}
+{#            font-size: 16px;#}
+{#            text-align: center;#}
+{#        }#}
+{##}
+{#        .verify-button {#}
+{#            background-color: #007bff;#}
+{#            color: white;#}
+{#            padding: 10px 20px;#}
+{#            border: none;#}
+{#            border-radius: 5px;#}
+{#            font-size: 16px;#}
+{#            cursor: pointer;#}
+{#            width: 100%;#}
+{#            margin-bottom: 10px;#}
+{#            transition: background-color 0.3s;#}
+{#        }#}
+{##}
+{#        .verify-button:hover {#}
+{#            background-color: #0056b3;#}
+{#        }#}
+{##}
+{#        .try-again {#}
+{#            color: #007bff;#}
+{#            font-size: 12px;#}
+{#            text-decoration: none;#}
+{#            cursor: pointer;#}
+{#        }#}
+{##}
+{#        .try-again:hover {#}
+{#            text-decoration: underline;#}
+{#        }#}
+{#    </style>#}
+{#</head>#}
+{#<body>#}
+{#<form action="{% url 'verify_gmail' %}" method="post">#}
+{#    {% csrf_token %}#}
+{#    <div class="verify-container">#}
+{#        <div class="verify-icon">📧</div>#}
+{#        <h2>Verify It’s You.</h2>#}
+{#        <p class="verify-message">#}
+{#            We sent verification code to {{ user.email }}.<br>#}
+{#            Please check your inbox and enter the code below.#}
+{#        </p>#}
+{#        <input type="text" class="code-input" placeholder="Codni Tasdiqlang" maxlength="6">#}
+{#        <button class="verify-button">Verify Code</button>#}
+{#        <a class="try-again">Didn’t receive an email? Try again</a>#}
+{#    </div>#}
+{#</form>#}
+{#</body>#}
+{#</html>#}

@@ -1,0 +1,32 @@
+[
+  {
+    "model": "apps.Transaction",
+    "pk": 1,
+    "fields": {
+      "name": "Renee Sims",
+       "date" : "13 Sep, 2021",
+      "Amount": 145,
+      "Status": "Pending"
+
+    }
+  },
+  {
+    "model": "apps.Transaction",
+    "pk": 2,
+    "fields": {
+      "name": "Edith Koenig",
+      "Amount": 145,
+      "Status": "Pending"
+    }
+  },
+  {
+    "model": "apps.Transaction",
+    "pk": 3,
+    "fields": {
+      "name": "Carrie Blount",
+      "date" : "13 Sep, 2021",
+      "Amount": 145,
+      "Status": "Pending"
+    }
+  }
+]
